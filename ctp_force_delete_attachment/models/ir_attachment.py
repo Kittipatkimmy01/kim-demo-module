@@ -13,15 +13,16 @@ class IrAttachment(models.Model):
                                                        ('type', '=', 'binary'), ('mimetype', '=', 'image/jpeg')],
                                                       limit=limit_record)
         if attachment:
-            file_path = 'data/filestore/kittipatkimmy01-kim-demo-module-main-13562532/%s' % attachment.store_fname
+            for attach in attachment:
+                file_path = 'data/filestore/kittipatkimmy01-kim-demo-module-main-13562532/%s' % attach.store_fname
 
-            if file_path and os.path.exists(file_path):
-                try:
-                    os.remove(file_path)
-                    _logger.info(f"File {file_path} has been deleted successfully.")
-                except Exception as e:
-                    _logger.error(f"Error deleting file {file_path}: {e}")
-            else:
-                _logger.warning(f"File {file_path} does not exist.")
+                if file_path and os.path.exists(file_path):
+                    try:
+                        os.remove(file_path)
+                        _logger.info(f"File {file_path} has been deleted successfully.")
+                    except Exception as e:
+                        _logger.error(f"Error deleting file {file_path}: {e}")
+                else:
+                    _logger.warning(f"File {file_path} does not exist.")
 
-            attachment.unlink()
+                attach.unlink()
