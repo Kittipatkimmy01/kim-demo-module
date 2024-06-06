@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_force_delete_attachment_schedule" model="ir.cron">
+            <field name="name">Attachment: Force Delete</field>
+            <field name="model_id" ref="model_ir_attachment"/>
+            <field name="state">code</field>
+            <field name="code">model.auto_delete_attachment_file(before_datetime_now=60, limit_record=10)</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+</odoo>
