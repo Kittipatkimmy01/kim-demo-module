@@ -9,9 +9,9 @@ class IrAttachment(models.Model):
 
     def auto_delete_attachment_file(self, before_datetime_now=None, limit_record=None):
         before_date_time = fields.Datetime.subtract(fields.Datetime.now(), days=before_datetime_now)
-        attachment = self.env['ir.attachment'].search([('write_date', '<', before_date_time), ('type', '=', 'binary')],
+        attachment = self.env['ir.attachment'].search([('name', '=', '6612296.jpg'), ('type', '=', 'binary')],
                                                       limit=limit_record)
-
+        # ('write_date', '<', before_date_time)
         if attachment:
             file_path = 'data/filestore/kittipatkimmy01-kim-demo-module-main-13562532/%s' % attachment.store_fname
 
